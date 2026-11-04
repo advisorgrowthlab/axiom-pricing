@@ -283,6 +283,49 @@ header { padding-block: 56px 0; }
   .tip-pop::before { display: none; }
 }
 @media (max-width: 820px) { .prices { grid-template-columns: 1fr; } .pbox { padding: 22px 18px 24px; } .plist .amt { white-space: normal; } }
+
+/* Pricing at a glance (v5) */
+.ptable { width: 100%; border-collapse: collapse; margin-top: 40px; border: 2px solid var(--ink); font-size: 16px; table-layout: fixed; }
+.ptable thead th { background: var(--band); color: var(--on-band); text-align: left; font-size: 13px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; padding: 14px 20px; }
+.ptable th:nth-child(1) { width: 30%; } .ptable th:nth-child(2) { width: 42%; } .ptable th:nth-child(3) { width: 28%; }
+.ptable tbody tr { border-top: 1px solid var(--line); }
+.ptable tbody tr:nth-child(even) { background: var(--soft); }
+.ptable td { padding: 20px; vertical-align: top; color: var(--slate); }
+.ptable .pname { display: block; color: var(--ink); font-weight: 650; font-size: 18px; letter-spacing: -.01em; line-height: 1.25; }
+.ptable .pamt { display: block; margin-top: 8px; color: var(--accent); font-weight: 700; font-size: 17px; line-height: 1.35; }
+.ptable ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 6px; }
+.ptable li { padding-left: 16px; position: relative; line-height: 1.45; }
+.ptable li::before { content: ""; position: absolute; left: 2px; top: .62em; width: 6px; height: 6px; background: var(--accent); }
+.ptable li.ni { color: var(--muted); }
+.ptable li.ni::before { background: var(--muted); }
+.ptable td.mk li { color: var(--ink); }
+.ptable td.mk li::before { background: var(--teal); }
+.mk-l { display: none; }
+.addons { margin-top: 40px; border: 2px solid var(--ink); padding: 28px; }
+.addons h3 { font-size: clamp(20px, 2vw, 23px); font-weight: 650; letter-spacing: -.015em; }
+.addons h3 span { font-weight: 400; color: var(--muted); font-size: 17px; }
+.alist { list-style: none; padding: 0; margin-top: 16px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 40px; border-top: 1px solid var(--line); }
+.alist li { display: flex; justify-content: space-between; align-items: baseline; gap: 8px 20px; padding: 12px 0; border-bottom: 1px solid var(--line); flex-wrap: wrap; }
+.alist .lbl { color: var(--ink); font-weight: 600; font-size: 16px; flex: 1 1 200px; }
+.alist .amt { font-weight: 700; font-size: 17px; color: var(--accent); white-space: nowrap; }
+.pterms { margin-top: 28px; display: grid; gap: 10px; max-width: 72ch; }
+.pterms p { font-size: 16px; color: var(--slate); }
+.pterms p.fine { font-size: 15px; color: var(--muted); }
+@media (max-width: 768px) {
+  .hero { grid-template-columns: 1fr !important; }
+  .ptable, .ptable tbody, .ptable tr, .ptable td { display: block; width: 100%; }
+  .ptable { border: 0; margin-top: 28px; }
+  .ptable thead { display: none; }
+  .ptable tbody tr { border: 2px solid var(--ink); margin-bottom: 14px; background: var(--bg) !important; }
+  .ptable td { padding: 16px 18px; }
+  .ptable td + td { border-top: 1px solid var(--line); }
+  .ptable td.pk { background: var(--soft); }
+  .ptable td.mk:empty { display: none; }
+  .mk-l { display: block; font-size: 12px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--teal); margin-bottom: 8px; }
+  .addons { padding: 20px 18px; }
+  .alist { grid-template-columns: 1fr; }
+  .alist .amt { white-space: normal; }
+}
 </style>
 <style>
 /* AGL hero video */
@@ -441,70 +484,60 @@ header { padding-block: 56px 0; }
 
 <section aria-labelledby="price-h">
   <div class="pair">
-    <h2 id="price-h">Pricing that scales with you.</h2>
+    <h2 id="price-h">Pricing at a glance.</h2>
     <div class="stack">
-      <p class="body" style="font-size:20px">Start with the foundation for your agency and a few advisors. Add advisors and monthly growth as you go.</p>
-      <p class="body">Build once, then grow every month. Your agency sponsors, the advisor pays, or you split it.</p>
+      <p class="body" style="font-size:20px">Build once, then grow every month. Your agency sponsors, the advisor pays, or you split it.</p>
+      <button type="button" class="watch" data-video="vid-story" aria-haspopup="dialog"><span class="play" aria-hidden="true"></span>Watch a sample story video</button>
     </div>
   </div>
-  <div class="prices">
-    <div class="pbox">
-      <h3>Advisor Foundation</h3>
-      <p class="what">Brand and message, multi-page website, search presence, and compliance pre-checks.</p>
-      <ul class="plist">
-        <li><div class="lbl"><span class="lbl-t">One-time build<span class="tip"><button type="button" class="tip-btn" aria-expanded="false" aria-controls="tip-1" aria-label="What is included: One-time build"><span aria-hidden="true">i</span></button><span class="tip-pop" id="tip-1" role="tooltip"><strong>What the $12,000 build includes</strong>Modeled on the pages of the Axiom site (axiomplanningresources.com):<span class="tip-list"><span class="tip-li">Brand and message: positioning, core messaging, and all page copy</span><span class="tip-li">Home page</span><span class="tip-li">About page with the advisor or firm story</span><span class="tip-li">Individual advisor or team bio pages</span><span class="tip-li">Contact and connect pages, with a booking calendar linked</span><span class="tip-li">Blog hub with 6 blogs written and published</span><span class="tip-li">Sections for the story video and podcast episodes</span><span class="tip-li">Privacy policy and required disclosures</span><span class="tip-li">Search presence: on-page SEO, site search, and Google indexing</span><span class="tip-li">Compliance pre-checks on every page before it goes to review</span></span></span></span></span></div><span class="amt">$12,000</span></li>
-        <li><div class="lbl"><span class="lbl-t">Refresh or lighter version<span class="tip"><button type="button" class="tip-btn" aria-expanded="false" aria-controls="tip-2" aria-label="What is included: Refresh or lighter version"><span aria-hidden="true">i</span></button><span class="tip-pop" id="tip-2" role="tooltip"><strong>One of two routes</strong><span class="tip-list"><span class="tip-li"><b>Refresh:</b> we update the advisor's current website with new messaging, design updates, and compliance pre-checks, without rebuilding it from scratch.</span><span class="tip-li"><b>Lighter site:</b> a smaller, focused site (for example home, about, and contact) for an advisor who does not need a full site like Axiom's.</span></span></span></span></span></div><span class="amt">$4,500</span></li>
-        <li><div class="lbl"><span class="lbl-t">Build range, depending on scope</span></div><span class="amt">$4,500–$12,000</span></li>
-        <li><div class="lbl"><span class="lbl-t">Monthly care</span><small>Hosting, edits, compliance resubmits.</small></div><span class="amt">$150–$500/mo</span></li>
-      </ul>
-    </div>
-    <div class="pbox">
-      <h3>Logo and brand</h3>
-      <p class="what">An optional add-on for advisors who do not already have a logo. Not part of any build.</p>
-      <p class="callout">Axiom covers up to $1,500 for logo/brand design. The advisor buys the design directly from our vendor and Axiom reimburses them, so the advisor covers the rest.</p>
-      <ul class="plist">
-        <li><div class="lbl"><span class="lbl-t">Logo and basic identity</span><small>Add-on, from $2,500.</small></div><span class="amt">$2,500–$5,000</span></li>
-        <li><div class="lbl"><span class="lbl-t">Strategy and full identity system<span class="tip"><button type="button" class="tip-btn" aria-expanded="false" aria-controls="tip-3" aria-label="What is included: Strategy and full identity system"><span aria-hidden="true">i</span></button><span class="tip-pop" id="tip-3" role="tooltip"><strong>Strategy and full identity system</strong>For an advisor who needs the brand worked out before the website is built. We develop the brand strategy and design direction first, then the full visual identity:<span class="tip-list"><span class="tip-li">Brand strategy and design direction</span><span class="tip-li">Logo suite and variations</span><span class="tip-li">Colour palette and typography</span><span class="tip-li">Brand guide for consistent use</span><span class="tip-li">The website build then starts from a finished brand</span></span></span></span></span><small>Add-on, priced separately.</small></div><span class="amt">$8,000–$15,000</span></li>
-      </ul>
-    </div>
-    <div class="pbox">
-      <h3>Story video</h3>
-      <p class="what">Included in the Foundation or added as an option.</p>
-      <ul class="plist">
-        <li><div class="lbl"><span class="lbl-t">Story video<span class="tip"><button type="button" class="tip-btn" aria-expanded="false" aria-controls="tip-4" aria-label="What is included: Story video"><span aria-hidden="true">i</span></button><span class="tip-pop" id="tip-4" role="tooltip"><strong>What the story video includes</strong><span class="tip-list"><span class="tip-li">A 2 to 4 minute film about the advisor and why they do this work</span><span class="tip-li">Professional on-site shoot: story interview plus B-roll</span><span class="tip-li">Editing, music, lower thirds, and end card</span><span class="tip-li">Compliance packaging, ready to submit</span><span class="tip-li">Travel outside the local shoot area is quoted separately</span></span></span></span></span><button type="button" class="watch" data-video="vid-story" aria-haspopup="dialog"><span class="play" aria-hidden="true"></span>Watch a sample story video</button></div><span class="amt">$3,500–$5,000</span></li>
-        <li><div class="lbl"><span class="lbl-t">Remote guided bio<span class="tip"><button type="button" class="tip-btn" aria-expanded="false" aria-controls="tip-5" aria-label="What is included: Remote guided bio"><span aria-hidden="true">i</span></button><span class="tip-pop" id="tip-5" role="tooltip"><strong>Remote guided bio</strong>A shorter bio video with no film crew or travel. We guide the advisor through prepared questions on a video call, then edit the recording with music, B-roll, and branded titles. A good fit when an on-site shoot is not needed.</span></span></span></div><span class="amt">$2,500</span></li>
-      </ul>
-    </div>
-    <div class="pbox">
-      <h3>Growth content and podcast</h3>
-      <p class="what">Monthly content, made and posted for you. Add a podcast in one of three options.</p>
-      <ul class="plist">
-        <li><div class="lbl"><span class="lbl-t">Monthly growth content<span class="tip"><button type="button" class="tip-btn" aria-expanded="false" aria-controls="tip-6" aria-label="What is included: Monthly growth content"><span aria-hidden="true">i</span></button><span class="tip-pop" id="tip-6" role="tooltip"><strong>What monthly growth content includes</strong>Three ready-made posts a week. Each one is an image, a written piece, or a podcast snippet. Every post is submitted for compliance approval, then published on the advisor's preferred social platforms.</span></span></span></div><span class="amt">$2,500/mo</span></li>
-        <li><div class="lbl"><span class="lbl-t"><span class="opt">Podcast, option 1</span><br>12 episodes a year</span></div><span class="amt">$2,500/mo</span></li>
-        <li><div class="lbl"><span class="lbl-t"><span class="opt">Podcast, option 2</span><br>8 episodes a year</span></div><span class="amt">$1,750/mo</span></li>
-        <li><div class="lbl"><span class="lbl-t"><span class="opt">Podcast, option 3</span><br>6 episodes a year</span></div><span class="amt">$1,500/mo</span></li>
-      </ul>
-    </div>
-    <div class="pbox wide">
-      <h3>Consulting and extras</h3>
-      <ul class="plist">
-        <li><div class="lbl"><span class="lbl-t">Fractional CMO or GA retainer<span class="tip"><button type="button" class="tip-btn" aria-expanded="false" aria-controls="tip-7" aria-label="What is included: Fractional CMO or GA retainer"><span aria-hidden="true">i</span></button><span class="tip-pop" id="tip-7" role="tooltip"><strong>Fractional CMO or GA retainer</strong>A senior marketing lead for the agency: a monthly strategy session, agreed priorities, and a working marketing plan. Listed on its own for agencies that want a dedicated lead.</span></span></span><small>Monthly strategy session, priorities, plan.</small></div><span class="amt">$8,000/mo</span></li>
-        <li><div class="lbl"><span class="lbl-t">Lighter CMO, added to Growth<span class="tip"><button type="button" class="tip-btn" aria-expanded="false" aria-controls="tip-8" aria-label="What is included: Lighter CMO, added to Growth"><span aria-hidden="true">i</span></button><span class="tip-pop" id="tip-8" role="tooltip"><strong>Lighter CMO, added to Growth</strong>A lighter version of the CMO retainer, added on top of monthly growth content ($2,500/mo), so $7,500/mo combined.</span></span></span></div><span class="amt">$5,000/mo</span></li>
-        <li><div class="lbl"><span class="lbl-t">Hourly consulting and changes<span class="tip"><button type="button" class="tip-btn" aria-expanded="false" aria-controls="tip-9" aria-label="What is included: Hourly consulting and changes"><span aria-hidden="true">i</span></button><span class="tip-pop" id="tip-9" role="tooltip"><strong>Hourly consulting and changes</strong>For extra changes or one-off work outside a package. Billed by the hour. For overflow only, not the default.</span></span></span><small>For overflow only, not the default.</small></div><span class="amt">$250–$350/hr</span></li>
-        <li><div class="lbl"><span class="lbl-t">Ads<span class="tip"><button type="button" class="tip-btn" aria-expanded="false" aria-controls="tip-10" aria-label="What is included: Ads"><span aria-hidden="true">i</span></button><span class="tip-pop" id="tip-10" role="tooltip"><strong>What ads include</strong><span class="tip-list"><span class="tip-li">Full media buying</span><span class="tip-li">Research and targeting</span><span class="tip-li">Creative direction</span><span class="tip-li">Static ad creation</span><span class="tip-li">All the ad variations needed, from one launch ad up to 60 ads, depending on the client's budget</span></span></span></span></span></div><span class="amt">From $2,500 per social platform</span></li>
-      </ul>
-    </div>
-    <div class="pbox wide tier">
-      <h3>Agency Engine</h3>
-      <p class="what">For the agency and its advisors, with the agency as the buyer.</p>
-      <ul class="plist">
-        <li><div class="lbl"><span class="lbl-t">Agency site and brand</span></div><span class="amt">$15,000–$20,000</span></li>
-        <li><div class="lbl"><span class="lbl-t">Advisor seats</span><small>For 5+ advisors, billed through the agency.</small></div><span class="amt">10–20% off</span></li>
-        <li><div class="lbl"><span class="lbl-t">Fractional CMO</span></div><span class="amt">Included or discounted</span></li>
-      </ul>
-    </div>
+  <table class="ptable">
+    <thead><tr><th scope="col">Package and price</th><th scope="col">What&rsquo;s included</th><th scope="col">What the market charges</th></tr></thead>
+    <tbody>
+        <tr><td class="pk"><span class="pname">Essentials Site</span><span class="pamt">$4,500–6,000</span></td><td class="inc"><ul><li>1-page site in their current colors and logo</li><li>Copy written from one 45-minute call</li><li>Booking link, contact form, basic search setup</li><li>Compliance pre-check and submission package</li><li>2 revision rounds and launch</li><li class="ni">Not included: new brand, extra pages, video</li></ul></td><td class="mk"></td></tr>
+        <tr><td class="pk"><span class="pname">Foundation</span><span class="pamt">$10,000–15,000</span></td><td class="inc"><ul><li>Brand and message session</li><li>Logo and identity</li><li>5–7 page site</li><li>Google Business and local search setup</li><li>Compliance package per page</li><li>2 revision rounds and launch</li><li class="ni">Not included: video, full rebrand, ongoing content</li></ul></td><td class="mk"><span class="mk-l">What the market charges</span><ul><li>$10,150–30,450</li><li>Up to $15,000+</li></ul></td></tr>
+        <tr><td class="pk"><span class="pname">Custom + GA site</span><span class="pamt">From $15,000</span></td><td class="inc"><ul><li>Designed from scratch</li><li>7+ pages</li><li>For GAs: recruiting page and advisor directory; price moves with directory size and seats onboarded</li><li>Integrations as scoped</li><li>Compliance package per page</li></ul></td><td class="mk"><span class="mk-l">What the market charges</span><ul><li>Up to $30,450</li></ul></td></tr>
+        <tr><td class="pk"><span class="pname">Basic hosting</span><span class="pamt">$50–100 a month</span></td><td class="inc"><ul><li>Hosting and SSL</li><li>Security updates and backups</li><li>No edits included</li></ul></td><td class="mk"><span class="mk-l">What the market charges</span><ul><li>$178 a month (template platform)</li></ul></td></tr>
+        <tr><td class="pk"><span class="pname">Care</span><span class="pamt">$300 a month, 12-month minimum with a build</span></td><td class="inc"><ul><li>Hosting, SSL, updates, backups, uptime</li><li>1 edit hour a month</li><li>Resubmits for pages we edit</li></ul></td><td class="mk"><span class="mk-l">What the market charges</span><ul><li>$418 a month</li></ul></td></tr>
+        <tr><td class="pk"><span class="pname">Care+</span><span class="pamt">$500 a month</span></td><td class="inc"><ul><li>Everything in Care</li><li>3 edit hours a month</li><li>Quarterly search and Google Business check</li><li>Monthly report, 2-day turnaround</li></ul></td><td class="mk"></td></tr>
+        <tr><td class="pk"><span class="pname">Value proposition video</span><span class="pamt">$2,000–3,000</span></td><td class="inc"><ul><li>60–90 second motion-graphic video</li><li>No filming</li><li>Script written and pre-checked</li><li>Voiceover: theirs or a licensed AI voice</li><li>2 revision rounds</li><li>Pairs with Essentials</li></ul></td><td class="mk"></td></tr>
+        <tr><td class="pk"><span class="pname">Remote story video</span><span class="pamt">About $2,000</span></td><td class="inc"><ul><li>Riverside interview in 4K on the advisor's own kit</li><li>Motion graphics and team photos</li><li>2–3 minute video plus 3 short social cuts</li><li>Script outline and compliance pre-check</li></ul></td><td class="mk"><span class="mk-l">What the market charges</span><ul><li>From $2,500 a video</li><li>From $3,750 a video</li></ul></td></tr>
+        <tr><td class="pk"><span class="pname">On-location story video</span><span class="pamt">Price on request</span></td><td class="inc"><ul><li>Vendor film crew at the advisor's office, one shoot day</li><li>Edited story video and short cuts</li></ul></td><td class="mk"></td></tr>
+        <tr><td class="pk"><span class="pname">Podcast</span><span class="pamt">$2,000 a month</span></td><td class="inc"><ul><li>1 episode a month, edited and published</li><li>Show notes</li><li>Compliance check on each episode</li><li>Extra episodes $500 each</li><li class="ni">Not included: guest booking, audience buying</li></ul></td><td class="mk"><span class="mk-l">What the market charges</span><ul><li>$2,100–6,500 a month</li></ul></td></tr>
+        <tr><td class="pk"><span class="pname">Podcast + Social</span><span class="pamt">$3,500 a month</span></td><td class="inc"><ul><li>Up to 2 episodes a month, edited and published</li><li>3 reels and 3 social posts a week cut from the episodes</li><li>Compliance prep on every piece</li></ul></td><td class="mk"><span class="mk-l">What the market charges</span><ul><li>Up to $6,500 a month, podcast only</li></ul></td></tr>
+        <tr><td class="pk"><span class="pname">Social only</span><span class="pamt">About $1,500 a month</span></td><td class="inc"><ul><li>3 posts a week on 2 platforms</li><li>Written, designed and posted for them</li><li>Compliance prep on every post</li><li>For clients without a podcast</li></ul></td><td class="mk"></td></tr>
+        <tr><td class="pk"><span class="pname">Ads</span><span class="pamt">$1,500 setup + $2,500 a month</span></td><td class="inc"><ul><li>One platform, up to $10K a month in spend</li><li>12% of spend above $10K; second platform +$1,000 a month</li><li>Setup, creative, management, monthly report</li><li>Compliance prep on every ad</li><li class="ni">Not included: ad spend, paid to the platform</li></ul></td><td class="mk"><span class="mk-l">What the market charges</span><ul><li>From $3,000 a month</li><li>From $5,997 a month</li></ul></td></tr>
+        <tr><td class="pk"><span class="pname">The Lab</span><span class="pamt">$2,000 a month per agency, 3-month minimum</span></td><td class="inc"><ul><li>Private kickoff and a written 12-month plan</li><li>Quarterly sessions with 8–10 agencies</li><li>Shared playbooks</li><li>Up to 4 video answers a month</li></ul></td><td class="mk"><span class="mk-l">What the market charges</span><ul><li>$3,000 a month</li></ul></td></tr>
+        <tr><td class="pk"><span class="pname">Fractional CMO</span><span class="pamt">$5,000 a month, 3-month minimum</span></td><td class="inc"><ul><li>Private session every month</li><li>Plan revised monthly</li><li>Up to 8 video answers a month</li><li>Our team does the work, priced per line</li></ul></td><td class="mk"><span class="mk-l">What the market charges</span><ul><li>From $7,000 a month</li><li>$8,000–15,000 a month (most common)</li><li>$5,000–25,000+ a month</li></ul></td></tr>
+        <tr><td class="pk"><span class="pname">Strategy + full identity</span><span class="pamt">Upon request</span></td><td class="inc"><ul><li>Positioning, naming if needed</li><li>Full identity system</li><li class="ni">Not included: the site build</li></ul></td><td class="mk"></td></tr>
+        <tr><td class="pk"><span class="pname">Strategy consulting</span><span class="pamt">$600 an hour</span></td><td class="inc"><ul><li>One-on-one strategy outside a tier</li></ul></td><td class="mk"></td></tr>
+        <tr><td class="pk"><span class="pname">Overflow</span><span class="pamt">$250 an hour</span></td><td class="inc"><ul><li>Production work past a tier's hours</li></ul></td><td class="mk"></td></tr>
+        <tr><td class="pk"><span class="pname">Seat discount</span><span class="pamt">10% at 5–9 seats, 15% at 10+</span></td><td class="inc"><ul><li>Advisor lines billed through the agency</li></ul></td><td class="mk"></td></tr>
+    </tbody>
+  </table>
+  <div class="pterms">
+    <p class="fine">Market column shows published prices from comparable providers. Blank means no comparable figure yet.</p>
+    <p class="fine">Monthly article and email are available as add-ons.</p>
   </div>
-  <p class="pnote">All prices in USD.</p>
+  <div class="addons">
+    <h3>Add-ons <span>(flat prices)</span></h3>
+    <ul class="alist">
+        <li><span class="lbl">Added page, template</span><span class="amt">$400</span></li>
+        <li><span class="lbl">Added page, with copy</span><span class="amt">$1,200</span></li>
+        <li><span class="lbl">Booking or CRM integration</span><span class="amt">$750</span></li>
+        <li><span class="lbl">Calculator or interactive tool</span><span class="amt">$1,500–3,000</span></li>
+        <li><span class="lbl">Blog setup (templates, categories, first post)</span><span class="amt">$1,000</span></li>
+        <li><span class="lbl">Extra revision round</span><span class="amt">$750</span></li>
+        <li><span class="lbl">Copy only, per page</span><span class="amt">$600</span></li>
+        <li><span class="lbl">Monthly article</span><span class="amt">$750/mo</span></li>
+        <li><span class="lbl">Monthly email to their list</span><span class="amt">$500/mo</span></li>
+        <li><span class="lbl">Rush (launch in under 3 weeks)</span><span class="amt">+25%</span></li>
+    </ul>
+  </div>
+  <div class="pterms">
+    <p>Payment terms: builds are 50% at signing and 50% at launch, with 12 months of Care required.</p>
+    <p>Website quotes move with pages, who writes the copy, template vs. custom design, photo and video, integrations, and rush timelines.</p>
+    <p class="fine">All prices in USD.</p>
+  </div>
   <dialog class="vdlg" id="vid-story" aria-label="Sample story video">
     <div class="vdlg-bar"><span>Sample story video</span><button type="button" class="vdlg-x" aria-label="Close video">&times;</button></div>
     <video controls playsinline preload="none" poster="assets/axiom-story-poster.jpg" width="1280" height="720">
@@ -513,16 +546,6 @@ header { padding-block: 56px 0; }
   </dialog>
   <script>
   (function(){
-    var tips=[].slice.call(document.querySelectorAll('.tip'));
-    function closeAll(except){tips.forEach(function(t){if(t!==except){t.classList.remove('open');t.querySelector('.tip-btn').setAttribute('aria-expanded','false');}});}
-    tips.forEach(function(t){
-      var b=t.querySelector('.tip-btn');
-      b.addEventListener('click',function(e){e.stopPropagation();var o=!t.classList.contains('open');closeAll(t);t.classList.toggle('open',o);t.classList.remove('hush');b.setAttribute('aria-expanded',o?'true':'false');});
-      t.addEventListener('mouseleave',function(){t.classList.remove('hush');});
-      b.addEventListener('blur',function(){t.classList.remove('hush');});
-    });
-    document.addEventListener('click',function(e){if(!e.target.closest('.tip'))closeAll();});
-    document.addEventListener('keydown',function(e){if(e.key==='Escape'){tips.forEach(function(t){if(t.classList.contains('open')||t.matches(':hover')||t.contains(document.activeElement)){t.classList.add('hush');}});closeAll();}});
     [].slice.call(document.querySelectorAll('.watch')).forEach(function(w){
       var d=document.getElementById(w.getAttribute('data-video'));var v=d.querySelector('video');
       w.addEventListener('click',function(){if(d.showModal)d.showModal();else d.setAttribute('open','');v.play&&v.play().catch(function(){});});
